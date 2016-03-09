@@ -19,7 +19,7 @@ To  use the Sass rules, add the following to your `WORKSPACE` file to add the
 external repositories for Sass:
 
 ```python
-load("@bazel_tools//tools/build_defs/sass:sass.bzl", "sass_repositories")
+load("@io_bazel_rules_sass//sass:sass.bzl", "sass_repositories")
 
 sass_repositories()
 ```
@@ -62,7 +62,7 @@ $example-red: #ff0000;
 ```python
 package(default_visibility = ["//visibility:public"])
 
-load("@bazel_tools//tools/build_defs/sass:sass.bzl", "sass_library")
+load("@io_bazel_rules_sass//sass:sass.bzl", "sass_library")
 
 sass_library(
     name = "colors",
@@ -97,7 +97,7 @@ html {
 ```python
 package(default_visibility = ["//visibility:public"])
 
-load("@bazel_tools//tools/build_defs/sass:sass.bzl", "sass_binary")
+load("@io_bazel_rules_sass//sass:sass.bzl", "sass_binary")
 
 sass_binary(
     name = "hello_world",

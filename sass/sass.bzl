@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-SASS_FILETYPES = FileType([".sass", ".scss"])
+SASS_FILETYPES = FileType([
+    ".sass",
+    ".scss",
+])
 
 def collect_transitive_sources(ctx):
     source_files = set(order="compile")
@@ -55,7 +58,6 @@ sass_deps_attr = attr.label_list(
 )
 
 sass_library = rule(
-    implementation = _sass_library_impl,
     attrs = {
         "srcs": attr.label_list(
             allow_files = SASS_FILETYPES,
@@ -64,10 +66,10 @@ sass_library = rule(
         ),
         "deps": sass_deps_attr,
     },
+    implementation = _sass_library_impl,
 )
 
 sass_binary = rule(
-    implementation = _sass_binary_impl,
     attrs = {
         "src": attr.label(
             allow_files = SASS_FILETYPES,
@@ -77,7 +79,7 @@ sass_binary = rule(
         "output_style": attr.string(default = "compressed"),
         "deps": sass_deps_attr,
         "_sassc": attr.label(
-            default = Label("@bazel_tools//tools/build_defs/sass:sassc"),
+            default = Label("//sass:sassc"),
             executable = True,
             single_file = True,
         ),
@@ -86,6 +88,7 @@ sass_binary = rule(
         "css_file": "%{name}.css",
         "css_map_file": "%{name}.css.map",
     },
+    implementation = _sass_binary_impl,
 )
 
 LIBSASS_BUILD_FILE = """

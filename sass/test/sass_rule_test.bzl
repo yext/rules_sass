@@ -13,12 +13,11 @@
 # limitations under the License.
 
 load(
-    "//tools/build_defs/sass:sass.bzl",
+    "//sass:sass.bzl",
     "sass_binary",
 )
-
 load(
-    "//tools/build_rules:test_rules.bzl",
+    "@bazel_tools//tools/build_rules:test_rules.bzl",
     "success_target",
     "successful_test",
     "failure_target",

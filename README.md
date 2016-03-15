@@ -19,6 +19,12 @@ To  use the Sass rules, add the following to your `WORKSPACE` file to add the
 external repositories for Sass:
 
 ```python
+git_repository(
+    name = "io_bazel_rules_sass",
+    remote = "https://github.com/bazelbuild/rules_sass.git",
+    tag = "0.0.1",
+)
+
 load("@io_bazel_rules_sass//sass:sass.bzl", "sass_repositories")
 
 sass_repositories()

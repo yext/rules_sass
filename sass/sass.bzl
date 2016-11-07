@@ -81,6 +81,7 @@ sass_binary = rule(
         "_sassc": attr.label(
             default = Label("//sass:sassc"),
             executable = True,
+            cfg = "host",
             single_file = True,
         ),
     },
